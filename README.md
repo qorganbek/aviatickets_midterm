@@ -7,7 +7,7 @@ Midterm Exam is for Android course Students of KBTU Spring 2023-2024
 Use git clone command to fetch the project.
 
 ```bash
-git clone https://github.com/estharossa/aviatickets.git
+git clone git@github.com:qorganbek/aviatickets_midterm.git
 ```
 
 ## About project
