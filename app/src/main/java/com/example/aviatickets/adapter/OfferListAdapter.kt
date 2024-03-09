@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.aviatickets.R
 import com.example.aviatickets.databinding.ItemOfferBinding
 import com.example.aviatickets.model.entity.Offer
@@ -13,10 +14,6 @@ class OfferListAdapter : RecyclerView.Adapter<OfferListAdapter.ViewHolder>() {
     val items: ArrayList<Offer> = arrayListOf()
 
     fun setItems(offerList: List<Offer>) {
-//        items.clear()
-//        items.addAll(offerList)
-//        notifyDataSetChanged()
-
         val diffCallback = object : DiffUtil.Callback() {
             override fun getOldListSize(): Int = items.size
             override fun getNewListSize(): Int = offerList.size
@@ -30,10 +27,6 @@ class OfferListAdapter : RecyclerView.Adapter<OfferListAdapter.ViewHolder>() {
         items.clear()
         items.addAll(offerList)
         diffResult.dispatchUpdatesTo(this)
-
-        /**
-         * think about recycler view optimization using diff.util
-         */
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -78,6 +71,11 @@ class OfferListAdapter : RecyclerView.Adapter<OfferListAdapter.ViewHolder>() {
                 )
                 direct.text = context.getString(R.string.direct)
                 price.text = context.getString(R.string.price_fmt, offer.price.toString())
+
+                val imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFpbRgOME1T7VXwjR9EVqoLPs_yzIDiTP7vszxC_mhIZ1rr55j2mfdLS0rDbQv1ptQphc&usqp=CAU"
+                Glide.with(context)
+                    .load(imageUrl)
+                    .into(airlineImage)
             }
         }
 
